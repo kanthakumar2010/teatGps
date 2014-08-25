@@ -24,7 +24,7 @@ var app = {
           document.getElementById("startLon").innerHTML = position.coords.longitude;
           document.getElementById("startAcu").innerHTML = position.coords.accuracy;  
 
-          initialize(position.coords.latitude,position.coords.longitude); 
+          //initialize(position.coords.latitude,position.coords.longitude); 
           // polePosition();     
         },
             function(error) {
@@ -36,13 +36,13 @@ var app = {
 
 
 // google maps code
-     function initialize(la,lo) {
-                        var myLatlng = new google.maps.LatLng(la, lo);
-                        var mapOptions = {center: myLatlng, zoom: 25};
-                        var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+     // function initialize(la,lo) {
+     //                    var myLatlng = new google.maps.LatLng(la, lo);
+     //                    var mapOptions = {center: myLatlng, zoom: 25};
+     //                    var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
-                        var marker = new google.maps.Marker({position: myLatlng,map: map,title:"MY POSITION"});
-                    }
+     //                    var marker = new google.maps.Marker({position: myLatlng,map: map,title:"MY POSITION"});
+     //                }
 // watchPosition
   // function polePosition(){
         navigator.geolocation.watchPosition(function(position) { 

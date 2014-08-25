@@ -19,13 +19,13 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function( ) {
-        navigator.geolocation.watchPosition(function(position) { 
+        navigator.geolocation.getCurrentPosition(function(position) { 
           document.getElementById("startLat").innerHTML = position.coords.latitude;
           document.getElementById("startLon").innerHTML = position.coords.longitude;
           document.getElementById("startAcu").innerHTML = position.coords.accuracy;  
 
           initialize(position.coords.latitude,position.coords.longitude); 
-          polePosition();     
+          // polePosition();     
         },
             function(error) {
                 alert('code: '    + error.code    + '\n' +
@@ -44,7 +44,7 @@ var app = {
                         var marker = new google.maps.Marker({position: myLatlng,map: map,title:"MY POSITION"});
                     }
 // watchPosition
-  function polePosition(){
+  // function polePosition(){
         navigator.geolocation.watchPosition(function(position) { 
           document.getElementById("currentLat").innerHTML = position.coords.latitude;
           document.getElementById("currentLon").innerHTML = position.coords.longitude;
@@ -54,8 +54,8 @@ var app = {
                 alert('code: '    + error.code    + '\n' +
                     'message: ' + error.message + '\n');
             },
-        { frequency: 3000, frequencytimeout: 15000, enableHighAccuracy: true });
-  }
+        { frequency: 3000, enableHighAccuracy: true });
+  //}
 
     // {frequency: 3000, frequencytimeout: 15000, enableHighAccuracy: true}
 }
