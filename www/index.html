@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+      </head>
+
+    <body>
+
+        <div id="tripmeter">
+          <p>
+            Starting Location (lat, lon, acu):<br/>
+            <span id="startLat">???</span>°, <span id="startLon">???</span>°, <span id="startAcu">???</span>m
+          </p>
+
+          <p>
+            Current Location (lat, lon, acu):<br/>
+            <span id="currentLat">???</span>°, <span id="currentLon">???</span>°, <span id="currentAcu">???</span>m
+          </p>
+          
+          <p>
+            Distance from starting location:<br/>
+            <span id="distance">0</span> km
+          </p>
+        </div>
+
+
+
+
+
+<!-- map script below -->
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> 
+<script type="text/javascript">
+
+window.onload = navigator.geolocation.getCurrentPosition(function(position) { 
+          document.getElementById("startLat").innerHTML = position.coords.latitude;
+          document.getElementById("startLon").innerHTML = position.coords.longitude;
+          document.getElementById("startAcu").innerHTML = position.coords.accuracy;  
+
+          initialize(position.coords.latitude,position.coords.longitude); 
+          polePosition();     
+        },
+            function(error) {
+                alert('code: '    + error.code    + '\n' +
+                    'message: ' + error.message + '\n');
+            }, 
+
+            {timeout:10000, enableHighAccuracy: true});
+
+
+ function initialize(la,lo) {
+
+  var myLatlng = new google.maps.LatLng(la, lo);
+                        var mapOptions = {
+                          center: myLatlng,
+                          zoom: 25
+                        };
+                        var map = new google.maps.Map(document.getElementById("map-canvas"),
+                            mapOptions);
+
+                        var marker = new google.maps.Marker({position: myLatlng,map: map,title:"MY POSITION"});
+                    }
+
+  function polePosition(){
+    var watchID = navigator.geolocation.watchPosition(function(position) { 
+          document.getElementById("currentLat").innerHTML = position.coords.latitude;
+          document.getElementById("currentLon").innerHTML = position.coords.longitude;
+          document.getElementById("currentAcu").innerHTML = position.coords.accuracy;
+        },
+
+        function(error) {
+                alert('code: '    + error.code    + '\n' +
+                    'message: ' + error.message + '\n');
+            },
+         { timeout: 30000 });
+  }
+   </script>
+ -->
+
+        
+        
+
+        <div id="map-canvas" style="position:absolute;bottom:0;left:0;width:100%;height:60%;"/>
+
+
+
+<!-- cordova file -->
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> 
+        <script type="text/javascript" src="js/index.js"></script>       
+        <script type="text/javascript">
+              app.initialize();
+        </script>
+    </body>
+</html>
