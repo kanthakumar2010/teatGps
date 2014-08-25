@@ -25,7 +25,7 @@ var app = {
           document.getElementById("startAcu").innerHTML = position.coords.accuracy;  
 
           initialize(position.coords.latitude,position.coords.longitude); 
-          polePosition();     
+          // polePosition();     
         },
             function(error) {
                 alert('code: '    + error.code    + '\n' +
@@ -44,7 +44,7 @@ var app = {
                         var marker = new google.maps.Marker({position: myLatlng,map: map,title:"MY POSITION"});
                     }
 // watchPosition
-  function polePosition(){
+  // function polePosition(){
         navigator.geolocation.watchPosition(function(position) { 
           document.getElementById("currentLat").innerHTML = position.coords.latitude;
           document.getElementById("currentLon").innerHTML = position.coords.longitude;
@@ -54,8 +54,8 @@ var app = {
                 alert('code: '    + error.code    + '\n' +
                     'message: ' + error.message + '\n');
             },
-        { frequency: 3000, frequencytimeout: 15000, enableHighAccuracy: true });
-  }
+        { frequency: 3000, enableHighAccuracy: true });
+  //}
 
     // {frequency: 3000, frequencytimeout: 15000, enableHighAccuracy: true}
 }
