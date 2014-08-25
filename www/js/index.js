@@ -19,7 +19,10 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function( ) {
+      var startPos;
+
         navigator.geolocation.getCurrentPosition(function(position) { 
+          startPos = position;
           document.getElementById("startLat").innerHTML = position.coords.latitude;
           document.getElementById("startLon").innerHTML = position.coords.longitude;
           document.getElementById("startAcu").innerHTML = position.coords.accuracy;  
@@ -45,21 +48,20 @@ var app = {
      //                }
 // watchPosition
   // function polePosition(){
-
-    var startPos;
+    
         navigator.geolocation.watchPosition(function(position) { 
-           startPos = position;
+           
           document.getElementById("currentLat").innerHTML = position.coords.latitude;
           document.getElementById("currentLon").innerHTML = position.coords.longitude;
           document.getElementById("currentAcu").innerHTML = position.coords.accuracy;
 
-          document.getElementById("distance").innerHTML =
+          document.getElementById("distancem").innerHTML =
               calculateDistance(startPos.coords.latitude, startPos.coords.longitude,
                                 position.coords.latitude, position.coords.longitude);
 
-          document.getElementById("distancem").innerHTML =
+          document.getElementById("distance").innerHTML =
               calculateDistance(startPos.coords.latitude, startPos.coords.longitude,
-                                position.coords.latitude, position.coords.longitude) * 1000;
+                                position.coords.latitude, position.coords.longitude) / 1000;
         },
         function(error) {
                 alert('code: '    + error.code    + '\n' +
@@ -69,7 +71,8 @@ var app = {
   //}
 
     function calculateDistance(lat1, lon1, lat2, lon2) {
-        var R = 6371; // km
+        //var R = 6371; // km
+        var R = 6371000; // m
         var dLat = (lat2-lat1).toRad();
         var dLon = (lon2-lon1).toRad();
         var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
